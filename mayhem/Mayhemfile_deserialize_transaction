@@ -1,0 +1,7 @@
+# Mayhem target: deserialize_transaction (libFuzzer). Built by mayhem/build.sh to /mayhem/deserialize_transaction.
+project: savantenvs/rust-bitcoin
+target: deserialize_transaction
+
+cmds:
+  - cmd: /mayhem/deserialize_transaction
+    libfuzzer: true

@@ -1,0 +1,7 @@
+# Mayhem target: deser_net_msg (libFuzzer). Built by mayhem/build.sh to /mayhem/deser_net_msg.
+project: savantenvs/rust-bitcoin
+target: deser_net_msg
+
+cmds:
+  - cmd: /mayhem/deser_net_msg
+    libfuzzer: true

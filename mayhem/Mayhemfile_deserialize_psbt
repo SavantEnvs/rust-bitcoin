@@ -1,0 +1,7 @@
+# Mayhem target: deserialize_psbt (libFuzzer). Built by mayhem/build.sh to /mayhem/deserialize_psbt.
+project: savantenvs/rust-bitcoin
+target: deserialize_psbt
+
+cmds:
+  - cmd: /mayhem/deserialize_psbt
+    libfuzzer: true

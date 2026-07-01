@@ -1,0 +1,142 @@
+[package]
+name = "bitcoin-fuzz-mayhem"
+edition = "2021"
+version = "0.0.1"
+authors = ["Mayhem integration (additive)"]
+publish = false
+
+# Standalone workspace so this additive crate is NOT pulled into the root
+# rust-bitcoin workspace (keeps the mayhem layer purely additive; upstream's
+# own fuzz/ crate is left untouched).
+[workspace]
+
+[package.metadata]
+cargo-fuzz = true
+
+[lib]
+name = "bitcoin_fuzz"
+path = "src/lib.rs"
+
+[dependencies]
+libfuzzer-sys = "0.4"
+bitcoin = { path = "../../bitcoin", features = [ "serde" ] }
+bitcoin_0_32 = { version = "0.32.101", package = "bitcoin", features = [ "encoding", "serde" ] }
+bitcoin-consensus-encoding = { path = "../../consensus_encoding" }
+p2p = { path = "../../p2p", package = "bitcoin-p2p-messages" }
+serde = { version = "1.0.103", features = [ "derive" ] }
+serde_json = "1.0"
+
+# Pin the channel by DATE: -Zsanitizer=address (the OSS-Fuzz Rust ASan path) needs
+# nightly. Use a recent enough nightly for transitive zerocopy 0.8.x (rustc >= 1.89).
+
+[lints.rust]
+unexpected_cfgs = { level = "allow", check-cfg = ['cfg(fuzzing)'] }
+
+[[bin]]
+name = "deser_net_msg"
+path = "fuzz_targets/bitcoin/deser_net_msg.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "deserialize_address"
+path = "fuzz_targets/bitcoin/deserialize_address.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "deserialize_block"
+path = "fuzz_targets/bitcoin/deserialize_block.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "deserialize_prefilled_transaction"
+path = "fuzz_targets/bitcoin/deserialize_prefilled_transaction.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "deserialize_psbt"
+path = "fuzz_targets/bitcoin/deserialize_psbt.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "deserialize_script"
+path = "fuzz_targets/bitcoin/deserialize_script.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "deserialize_transaction"
+path = "fuzz_targets/bitcoin/deserialize_transaction.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "deserialize_witness"
+path = "fuzz_targets/bitcoin/deserialize_witness.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "outpoint_string"
+path = "fuzz_targets/bitcoin/outpoint_string.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "p2p_address_roundtrip"
+path = "fuzz_targets/bitcoin/p2p_address_roundtrip.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "script_bytes_to_asm_fmt"
+path = "fuzz_targets/bitcoin/script_bytes_to_asm_fmt.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "hashes_json"
+path = "fuzz_targets/hashes/json.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "hashes_ripemd160"
+path = "fuzz_targets/hashes/ripemd160.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "hashes_sha1"
+path = "fuzz_targets/hashes/sha1.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "hashes_sha256"
+path = "fuzz_targets/hashes/sha256.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "hashes_sha512"
+path = "fuzz_targets/hashes/sha512.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "hashes_sha512_256"
+path = "fuzz_targets/hashes/sha512_256.rs"
+test = false
+doc = false
+bench = false
+[[bin]]
+name = "units_deserialize_amount"
+path = "fuzz_targets/units/deserialize_amount.rs"
+test = false
+doc = false
+bench = false

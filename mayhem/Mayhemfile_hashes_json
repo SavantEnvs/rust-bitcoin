@@ -1,0 +1,7 @@
+# Mayhem target: hashes_json (libFuzzer). Built by mayhem/build.sh to /mayhem/hashes_json.
+project: savantenvs/rust-bitcoin
+target: hashes_json
+
+cmds:
+  - cmd: /mayhem/hashes_json
+    libfuzzer: true

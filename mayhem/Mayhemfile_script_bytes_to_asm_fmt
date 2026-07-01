@@ -1,0 +1,7 @@
+# Mayhem target: script_bytes_to_asm_fmt (libFuzzer). Built by mayhem/build.sh to /mayhem/script_bytes_to_asm_fmt.
+project: savantenvs/rust-bitcoin
+target: script_bytes_to_asm_fmt
+
+cmds:
+  - cmd: /mayhem/script_bytes_to_asm_fmt
+    libfuzzer: true

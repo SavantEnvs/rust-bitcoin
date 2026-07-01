@@ -1,0 +1,7 @@
+# Mayhem target: hashes_sha512 (libFuzzer). Built by mayhem/build.sh to /mayhem/hashes_sha512.
+project: savantenvs/rust-bitcoin
+target: hashes_sha512
+
+cmds:
+  - cmd: /mayhem/hashes_sha512
+    libfuzzer: true

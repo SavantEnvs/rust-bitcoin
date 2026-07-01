@@ -1,0 +1,7 @@
+# Mayhem target: deserialize_address (libFuzzer). Built by mayhem/build.sh to /mayhem/deserialize_address.
+project: savantenvs/rust-bitcoin
+target: deserialize_address
+
+cmds:
+  - cmd: /mayhem/deserialize_address
+    libfuzzer: true

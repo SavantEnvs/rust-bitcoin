@@ -1,0 +1,7 @@
+# Mayhem target: outpoint_string (libFuzzer). Built by mayhem/build.sh to /mayhem/outpoint_string.
+project: savantenvs/rust-bitcoin
+target: outpoint_string
+
+cmds:
+  - cmd: /mayhem/outpoint_string
+    libfuzzer: true

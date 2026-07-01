@@ -1,0 +1,7 @@
+# Mayhem target: p2p_address_roundtrip (libFuzzer). Built by mayhem/build.sh to /mayhem/p2p_address_roundtrip.
+project: savantenvs/rust-bitcoin
+target: p2p_address_roundtrip
+
+cmds:
+  - cmd: /mayhem/p2p_address_roundtrip
+    libfuzzer: true

@@ -1,0 +1,7 @@
+# Mayhem target: deserialize_witness (libFuzzer). Built by mayhem/build.sh to /mayhem/deserialize_witness.
+project: savantenvs/rust-bitcoin
+target: deserialize_witness
+
+cmds:
+  - cmd: /mayhem/deserialize_witness
+    libfuzzer: true

@@ -1,0 +1,7 @@
+# Mayhem target: units_deserialize_amount (libFuzzer). Built by mayhem/build.sh to /mayhem/units_deserialize_amount.
+project: savantenvs/rust-bitcoin
+target: units_deserialize_amount
+
+cmds:
+  - cmd: /mayhem/units_deserialize_amount
+    libfuzzer: true
