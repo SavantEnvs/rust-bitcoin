@@ -1,0 +1,35 @@
+[package]
+name = "bitcoin-fuzz-mayhem"
+edition = "2021"
+version = "0.0.1"
+authors = ["Mayhem integration (additive)"]
+publish = false
+
+# Standalone workspace so this additive crate is NOT pulled into the root
+# rust-bitcoin workspace (keeps the mayhem layer purely additive; upstream's
+# own fuzz/ crate is left untouched).
+[workspace]
+
+[package.metadata]
+cargo-fuzz = true
+
+[lib]
+name = "bitcoin_fuzz"
+path = "src/lib.rs"
+
+[dependencies]
+libfuzzer-sys = "0.4"
+bitcoin = { path = "../../bitcoin", features = [ "serde" ] }
+
+# Pin the channel by DATE: -Zsanitizer=address (the OSS-Fuzz Rust ASan path) needs
+# nightly. Use a recent enough nightly for transitive zerocopy 0.8.x (rustc >= 1.89).
+
+[lints.rust]
+unexpected_cfgs = { level = "allow", check-cfg = ['cfg(fuzzing)'] }
+
+[[bin]]
+name = "deserialize_psbt"
+path = "fuzz_targets/bitcoin/deserialize_psbt.rs"
+test = false
+doc = false
+bench = false
