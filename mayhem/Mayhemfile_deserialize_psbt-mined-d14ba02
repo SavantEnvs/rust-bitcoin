@@ -1,0 +1,11 @@
+# Mayhem target: deserialize_psbt on BASE d14ba02 (mining, MINING.md). Built by mayhem/build.sh to /mayhem/deserialize_psbt.
+# seed-from: https://app.mayhem.security/savantenvs/rust-bitcoin/deserialize-psbt
+project: savantenvs/rust-bitcoin
+target: deserialize_psbt-mined-d14ba02
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/deserialize_psbt-mined-d14ba02/testsuite
+
+cmds:
+  - cmd: /mayhem/deserialize_psbt
+    libfuzzer: true
